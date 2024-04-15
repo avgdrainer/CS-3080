@@ -1,4 +1,4 @@
-import requests, bs4, openpyxl, re, time
+import requests, bs4, openpyxl, re
 from openpyxl.utils import get_column_letter
 
 class Author:
@@ -23,7 +23,7 @@ def main():
   for url in urls:
     
     year = getYear(url)
-    names = getNames(url, year)
+    names = getNames(url)
     countNames (names, authors, year)
 
   topThree = topContributors(authors)
@@ -38,7 +38,7 @@ def getYear(url):
   return year.group()
 
 #creates a BeautifulSoup object, scans for all contributors, places in list
-def getNames(url, year):
+def getNames(url):
 
   res = requests.get(url)
 
